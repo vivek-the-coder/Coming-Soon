@@ -1,0 +1,14 @@
+diff --git a/node_modules/@plasmicapp/loader/shared/cli.js b/node_modules/@plasmicapp/loader/shared/cli.js
+index 2d150ef..a8964f8 100644
+--- a/node_modules/@plasmicapp/loader/shared/cli.js
++++ b/node_modules/@plasmicapp/loader/shared/cli.js
+@@ -80,6 +80,9 @@ function getCurrentUser(plasmicDir) {
+ }
+ exports.getCurrentUser = getCurrentUser;
+ async function ensureRequiredLoaderVersion() {
++    if (process.env.PLASMIC_LOADER_SKIP_VERSION_CHECK === 'true') {
++        return;
++    }
+     const requiredVersions = await api.getRequiredPackages().catch((error) => {
+         let message = `Unable to verify loader version. Error: ${error.message}.`;
+         if (error.response) {
