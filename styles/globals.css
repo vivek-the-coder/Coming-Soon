@@ -1,16 +1,85 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  html,
+  body {
+    @apply bg-cream-50 text-charcoal-900;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    @apply font-sans;
+  }
+
+  a {
+    @apply text-gold-600 hover:text-gold-700 transition-colors;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Headings */
+  h1 {
+    @apply text-5xl font-serif font-bold text-charcoal-900 mb-4;
+  }
+
+  h2 {
+    @apply text-4xl font-serif font-bold text-charcoal-900 mb-3;
+  }
+
+  h3 {
+    @apply text-3xl font-serif font-bold text-charcoal-900 mb-2;
+  }
+
+  h4 {
+    @apply text-2xl font-serif font-bold text-charcoal-900 mb-2;
+  }
+
+  h5 {
+    @apply text-xl font-serif font-bold text-charcoal-900 mb-1;
+  }
+
+  h6 {
+    @apply text-lg font-serif font-bold text-charcoal-900 mb-1;
+  }
+
+  p {
+    @apply text-base leading-relaxed text-charcoal-700;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+/* Component styles */
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-lg font-medium transition-colors duration-200;
+  }
 
-* {
-  box-sizing: border-box;
+  .btn-primary {
+    @apply btn bg-gold-600 text-white hover:bg-gold-700;
+  }
+
+  .btn-secondary {
+    @apply btn bg-charcoal-800 text-white hover:bg-charcoal-900;
+  }
+
+  .btn-tertiary {
+    @apply btn bg-cream-100 text-charcoal-900 border border-charcoal-200 hover:bg-cream-200;
+  }
+
+  .btn-outline {
+    @apply btn bg-transparent border-2 border-gold-600 text-gold-600 hover:bg-gold-50;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
+  }
 }
