@@ -29,7 +29,7 @@ const SiteLayout: React.FC<SiteLayoutProps> = ({ children, navLinks, hotel, cont
       <header className="sticky top-0 z-30 border-b border-brand-muted/60 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center justify-between gap-6">
-            <Link href="/" legacyBehavior>
+            <Link href="/">
               <a className="font-serif text-2xl text-brand-dark">
                 {hotel.name}
                 <span className="block text-xs font-sans uppercase tracking-[0.4em] text-brand-accent">
@@ -42,7 +42,7 @@ const SiteLayout: React.FC<SiteLayoutProps> = ({ children, navLinks, hotel, cont
             {navLinks.map((item) => {
               const isActive = router.pathname === item.href;
               return (
-                <Link key={item.href} href={item.href} legacyBehavior>
+                <Link key={item.href} href={item.href}>
                   <a
                     className={`rounded-full px-4 py-2 transition ${
                       isActive

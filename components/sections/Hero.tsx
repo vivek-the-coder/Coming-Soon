@@ -43,7 +43,7 @@ const Hero: React.FC<HeroProps> = ({
 
     if (isInternal) {
       return (
-        <Link href={cta.href} legacyBehavior>
+        <Link href={cta.href}>
           <a className={className}>{cta.label}</a>
         </Link>
       );
