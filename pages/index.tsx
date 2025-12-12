@@ -7,6 +7,18 @@ function Index() {
   const whatsappLink = "https://wa.me/919712227011?text=Hi%20Hotel%20Sai%20Darshan,%20I%20would%20like%20to%20book%20a%20room";
   const phoneNumber = "tel:+919712227011";
 
+  const premiumColors = {
+    primary: "#2C1810",
+    secondary: "#8B6F47",
+    accent: "#D4AF37",
+    light: "#F5F1E8",
+    white: "#FFFFFF",
+    text: "#3E3E3E",
+    lightText: "#666666",
+    success: "#27AE60",
+    danger: "#E74C3C",
+  };
+
   return (
     <>
       <Head>
@@ -72,31 +84,44 @@ function Index() {
             })
           }}
         />
+
+        <style>{`
+          * {
+            scroll-behavior: smooth;
+          }
+          
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: ${premiumColors.light};
+          }
+        `}</style>
       </Head>
-      <main style={{ minHeight: "100vh" }}>
-        {/* Fixed Header with Navigation */}
+
+      <main style={{ minHeight: "100vh", background: premiumColors.light }}>
+        {/* Premium Navigation Header */}
         <nav
           style={{
             position: "sticky",
             top: 0,
-            background: "linear-gradient(135deg, #8B4513 0%, #A0522D 100%)",
-            color: "white",
-            padding: "0.8rem 2rem",
+            background: premiumColors.white,
+            color: premiumColors.primary,
+            padding: "1rem 2rem",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
             zIndex: 100,
-            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
             flexWrap: "wrap",
+            borderBottom: `2px solid ${premiumColors.accent}`,
           }}
         >
-          <div style={{ fontSize: "1.8rem", fontWeight: "bold", letterSpacing: "1px" }}>
-            🏨 Hotel Sai Darshan
+          <div style={{ fontSize: "1.5rem", fontWeight: 700, letterSpacing: "2px", color: premiumColors.primary }}>
+            ✨ Hotel Sai Darshan
           </div>
-          <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap" }}>
             {[
               { label: "Home", id: "home" },
-              { label: "Rooms & Pricing", id: "rooms" },
+              { label: "Rooms", id: "rooms" },
               { label: "Amenities", id: "amenities" },
               { label: "Location", id: "location" },
               { label: "Contact", id: "contact" },
@@ -105,125 +130,155 @@ function Index() {
                 key={item.id}
                 href={`#${item.id}`}
                 style={{
-                  color: "white",
+                  color: premiumColors.primary,
                   textDecoration: "none",
                   fontSize: "0.95rem",
-                  transition: "opacity 0.3s",
-                  cursor: "pointer",
+                  fontWeight: 500,
+                  transition: "all 0.3s ease",
+                  position: "relative",
+                  paddingBottom: "4px",
                 }}
-                onMouseOver={(e) => (e.currentTarget.style.opacity = "0.8")}
-                onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.color = premiumColors.accent;
+                  e.currentTarget.style.borderBottom = `2px solid ${premiumColors.accent}`;
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.color = premiumColors.primary;
+                  e.currentTarget.style.borderBottom = "none";
+                }}
               >
                 {item.label}
               </a>
             ))}
           </div>
-          {/* Call Button */}
           <a
             href={phoneNumber}
             style={{
-              background: "#FF6B6B",
-              color: "white",
-              padding: "0.5rem 1rem",
-              borderRadius: "25px",
+              background: premiumColors.accent,
+              color: premiumColors.white,
+              padding: "0.65rem 1.25rem",
+              borderRadius: "30px",
               textDecoration: "none",
               fontSize: "0.9rem",
-              fontWeight: "bold",
-              transition: "background 0.3s",
+              fontWeight: 600,
+              transition: "all 0.3s ease",
+              boxShadow: `0 4px 15px rgba(212, 175, 55, 0.3)`,
             }}
-            onMouseOver={(e) => (e.currentTarget.style.background = "#FF5252")}
-            onMouseOut={(e) => (e.currentTarget.style.background = "#FF6B6B")}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = `0 6px 20px rgba(212, 175, 55, 0.4)`;
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = `0 4px 15px rgba(212, 175, 55, 0.3)`;
+            }}
           >
-            ☎️ Call Now
+            ☎️ Reserve Now
           </a>
         </nav>
 
-        {/* Hero Section */}
+        {/* Premium Hero Section */}
         <section
           id="home"
           style={{
-            padding: "5rem 2rem",
+            padding: "8rem 2rem 6rem",
             textAlign: "center",
-            background: "linear-gradient(135deg, rgba(139, 69, 19, 0.2) 0%, rgba(160, 82, 45, 0.2) 100%)",
-            minHeight: "60vh",
+            background: `linear-gradient(135deg, ${premiumColors.primary}95 0%, ${premiumColors.secondary}90 100%)`,
+            minHeight: "70vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            color: premiumColors.white,
+            position: "relative",
+            overflow: "hidden",
           }}
         >
-          <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", margin: "0 0 1rem 0", color: "#1a1a1a", fontWeight: "bold" }}>
-            🏨 Welcome to Hotel Sai Darshan
-          </h1>
-          <h2 style={{ fontSize: "clamp(1rem, 3vw, 1.5rem)", color: "#666", margin: "0 0 2rem 0", fontWeight: "normal" }}>
-            Affordable Luxury • Clean Comfort • Prime Location
-          </h2>
-          <p
-            style={{
-              fontSize: "clamp(0.95rem, 2vw, 1.1rem)",
-              color: "#555",
-              marginBottom: "2rem",
-              maxWidth: "700px",
-              lineHeight: "1.6",
-            }}
-          >
-            Experience affordable luxury with our clean, comfortable rooms perfect for couples, families, and business travelers. Budget-friendly rates with zero compromises on quality.
-          </p>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", marginTop: "2rem" }}>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, opacity: 0.1 }}>
+            {/* Decorative Pattern */}
+          </div>
+          
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <div style={{ fontSize: "3.5rem", marginBottom: "1rem" }}>🏨</div>
+            <h1 style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", margin: "0 0 1rem 0", fontWeight: 700, letterSpacing: "1px" }}>
+              Hotel Sai Darshan
+            </h1>
+            <h2 style={{ fontSize: "clamp(1.1rem, 3vw, 1.6rem)", color: premiumColors.accent, margin: "0 0 2rem 0", fontWeight: 400, letterSpacing: "0.5px" }}>
+              Premium Comfort • Affordable Luxury • Prime Location
+            </h2>
+            <p
               style={{
-                padding: "1rem 2.5rem",
-                fontSize: "1rem",
-                background: "#25D366",
-                color: "white",
-                border: "none",
-                borderRadius: "50px",
-                cursor: "pointer",
-                fontWeight: "bold",
-                transition: "all 0.3s",
-                textDecoration: "none",
-                display: "inline-block",
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.background = "#20BA5A";
-                e.currentTarget.style.transform = "translateY(-2px)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.background = "#25D366";
-                e.currentTarget.style.transform = "translateY(0)";
+                fontSize: "clamp(0.95rem, 2vw, 1.15rem)",
+                color: "rgba(255,255,255,0.9)",
+                marginBottom: "2.5rem",
+                maxWidth: "700px",
+                lineHeight: "1.8",
+                marginLeft: "auto",
+                marginRight: "auto",
               }}
             >
-              💬 WhatsApp Us
-            </a>
-            <a
-              href={phoneNumber}
-              style={{
-                padding: "1rem 2.5rem",
-                fontSize: "1rem",
-                background: "#FF6B6B",
-                color: "white",
-                border: "none",
-                borderRadius: "50px",
-                cursor: "pointer",
-                fontWeight: "bold",
-                transition: "all 0.3s",
-                textDecoration: "none",
-                display: "inline-block",
-              }}
-              onMouseOver={(e) => {
-                e.currentTarget.style.background = "#FF5252";
-                e.currentTarget.style.transform = "translateY(-2px)";
-              }}
-              onMouseOut={(e) => {
-                e.currentTarget.style.background = "#FF6B6B";
-                e.currentTarget.style.transform = "translateY(0)";
-              }}
-            >
-              ☎️ Call Now: 9712227011
-            </a>
+              Experience exceptional hospitality with our immaculately clean rooms, premium amenities, and personalized service. Your comfort is our priority.
+            </p>
+            <div style={{ display: "flex", gap: "1.2rem", flexWrap: "wrap", justifyContent: "center", marginTop: "2rem" }}>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  padding: "1rem 2.5rem",
+                  fontSize: "1rem",
+                  background: premiumColors.success,
+                  color: "white",
+                  border: "none",
+                  borderRadius: "50px",
+                  cursor: "pointer",
+                  fontWeight: 600,
+                  transition: "all 0.3s ease",
+                  textDecoration: "none",
+                  display: "inline-block",
+                  boxShadow: `0 4px 15px rgba(39, 174, 96, 0.3)`,
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.background = "#229954";
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                  e.currentTarget.style.boxShadow = `0 6px 20px rgba(39, 174, 96, 0.4)`;
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.background = premiumColors.success;
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = `0 4px 15px rgba(39, 174, 96, 0.3)`;
+                }}
+              >
+                💬 Book via WhatsApp
+              </a>
+              <a
+                href={phoneNumber}
+                style={{
+                  padding: "1rem 2.5rem",
+                  fontSize: "1rem",
+                  background: premiumColors.accent,
+                  color: premiumColors.primary,
+                  border: "none",
+                  borderRadius: "50px",
+                  cursor: "pointer",
+                  fontWeight: 600,
+                  transition: "all 0.3s ease",
+                  textDecoration: "none",
+                  display: "inline-block",
+                  boxShadow: `0 4px 15px rgba(212, 175, 55, 0.3)`,
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-3px)";
+                  e.currentTarget.style.boxShadow = `0 6px 20px rgba(212, 175, 55, 0.4)`;
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = `0 4px 15px rgba(212, 175, 55, 0.3)`;
+                }}
+              >
+                ☎️ Call: 97122 27011
+              </a>
+            </div>
           </div>
         </section>
 
@@ -231,56 +286,62 @@ function Index() {
         <section
           id="rooms"
           style={{
-            padding: "4rem 2rem",
+            padding: "6rem 2rem",
             maxWidth: "1400px",
             margin: "0 auto",
           }}
         >
-          <h2 style={{ textAlign: "center", marginBottom: "0.5rem", color: "#1a1a1a", fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}>
-            🛏️ Our Room Categories & Pricing
-          </h2>
-          <p style={{ textAlign: "center", color: "#666", marginBottom: "3rem", fontSize: "1.05rem" }}>
-            Transparent pricing • No hidden charges • All amenities included
-          </p>
+          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+            <span style={{ fontSize: "0.9rem", fontWeight: 600, color: premiumColors.accent, letterSpacing: "2px", textTransform: "uppercase" }}>
+              Our Offerings
+            </span>
+            <h2 style={{ textAlign: "center", marginTop: "0.5rem", marginBottom: "0.5rem", color: premiumColors.primary, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700 }}>
+              Room Categories & Pricing
+            </h2>
+            <p style={{ textAlign: "center", color: premiumColors.lightText, marginBottom: "0", fontSize: "1.05rem" }}>
+              Transparent pricing • All-inclusive amenities • Book with confidence
+            </p>
+          </div>
+
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-              gap: "2rem",
+              gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+              gap: "2.5rem",
             }}
           >
             {[
               {
                 name: "Budget Room",
-                image: "🏠",
-                description: "Perfect for budget-conscious travelers",
-                amenities: ["Basic amenities", "Clean & comfortable", "Fan/AC", "Private bathroom"],
+                icon: "🏠",
+                description: "Comfortable and clean, perfect for value-conscious travelers",
+                amenities: ["Essential amenities", "Spotless clean", "Window AC/Fan", "Modern bathroom"],
                 rates: [
-                  { type: "Non-AC", price: "₹1,199/night" },
-                  { type: "AC", price: "₹1,700/night" },
+                  { type: "Non-AC", price: "₹1,199" },
+                  { type: "AC", price: "₹1,700" },
                 ],
-                bestFor: "Budget travelers",
+                bestFor: "Solo travelers & budget visitors",
               },
               {
                 name: "Semi Deluxe Room",
-                image: "⭐",
-                description: "Premium comfort with excellent value",
-                amenities: ["Premium bedding", "AC with temperature control", "Hot water", "LCD TV"],
+                icon: "⭐",
+                description: "Premium experience with excellent value and comfort",
+                amenities: ["Premium bedding", "Efficient AC", "Hot water 24/7", "42\" LCD TV"],
                 rates: [
-                  { type: "Non-AC", price: "₹1,599/night" },
-                  { type: "AC", price: "₹2,099/night" },
+                  { type: "Non-AC", price: "₹1,599" },
+                  { type: "AC", price: "₹2,099" },
                 ],
                 bestFor: "Families & couples",
                 featured: true,
               },
               {
                 name: "Deluxe Room",
-                image: "👑",
-                description: "Luxury experience at affordable prices",
-                amenities: ["Premium furnishings", "AC + heater", "Hot water 24/7", "Larger space", "Premium toiletries"],
+                icon: "👑",
+                description: "Luxury and elegance at remarkably affordable prices",
+                amenities: ["Premium furnishings", "AC + heater", "Hot water always", "Spacious layout", "Premium toiletries"],
                 rates: [
-                  { type: "Non-AC", price: "₹2,099/night" },
-                  { type: "AC", price: "₹2,599/night" },
+                  { type: "Non-AC", price: "₹2,099" },
+                  { type: "AC", price: "₹2,599" },
                 ],
                 bestFor: "Special occasions",
               },
@@ -288,47 +349,55 @@ function Index() {
               <div
                 key={index}
                 style={{
-                  padding: "2rem",
-                  background: room.featured ? "linear-gradient(135deg, #FFF9E6 0%, #FFE6CC 100%)" : "#f9f9f9",
-                  borderRadius: "12px",
-                  border: room.featured ? "2px solid #FFB800" : "1px solid #e0e0e0",
-                  boxShadow: room.featured ? "0 4px 15px rgba(255, 184, 0, 0.2)" : "0 2px 8px rgba(0,0,0,0.05)",
-                  transition: "transform 0.3s, box-shadow 0.3s",
+                  padding: "2.5rem",
+                  background: room.featured ? premiumColors.white : "rgba(255,255,255,0.7)",
+                  borderRadius: "15px",
+                  border: room.featured ? `3px solid ${premiumColors.accent}` : `1px solid rgba(0,0,0,0.05)`,
+                  boxShadow: room.featured ? `0 8px 30px rgba(212, 175, 55, 0.15)` : "0 4px 15px rgba(0,0,0,0.06)",
+                  transition: "all 0.4s cubic-bezier(0.23, 1, 0.320, 1)",
                   position: "relative",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "translateY(-5px)";
-                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.1)";
+                  e.currentTarget.style.transform = "translateY(-8px)";
+                  e.currentTarget.style.boxShadow = room.featured 
+                    ? `0 12px 40px rgba(212, 175, 55, 0.2)` 
+                    : "0 8px 25px rgba(0,0,0,0.12)";
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = room.featured ? "0 4px 15px rgba(255, 184, 0, 0.2)" : "0 2px 8px rgba(0,0,0,0.05)";
+                  e.currentTarget.style.boxShadow = room.featured 
+                    ? `0 8px 30px rgba(212, 175, 55, 0.15)` 
+                    : "0 4px 15px rgba(0,0,0,0.06)";
                 }}
               >
                 {room.featured && (
-                  <div style={{ position: "absolute", top: "-12px", right: "20px", background: "#FFB800", color: "white", padding: "0.4rem 0.8rem", borderRadius: "20px", fontSize: "0.85rem", fontWeight: "bold" }}>
-                    ⭐ Most Popular
+                  <div style={{ position: "absolute", top: "0px", right: "20px", background: premiumColors.accent, color: premiumColors.primary, padding: "0.5rem 1rem", borderRadius: "0 0 15px 15px", fontSize: "0.8rem", fontWeight: 700, letterSpacing: "1px" }}>
+                    ⭐ MOST POPULAR
                   </div>
                 )}
-                <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>{room.image}</div>
-                <h3 style={{ margin: "1rem 0", color: "#1a1a1a", fontSize: "1.4rem" }}>{room.name}</h3>
-                <p style={{ color: "#666", marginBottom: "1.5rem" }}>{room.description}</p>
                 
-                <div style={{ background: "rgba(139, 69, 19, 0.05)", padding: "1rem", borderRadius: "8px", marginBottom: "1.5rem" }}>
-                  <p style={{ margin: "0 0 0.5rem 0", color: "#666", fontSize: "0.9rem" }}>Best for: <strong>{room.bestFor}</strong></p>
+                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>{room.icon}</div>
+                <h3 style={{ margin: "1rem 0", color: premiumColors.primary, fontSize: "1.5rem", fontWeight: 700 }}>{room.name}</h3>
+                <p style={{ color: premiumColors.lightText, marginBottom: "1.5rem", fontSize: "0.95rem", lineHeight: "1.6" }}>{room.description}</p>
+                
+                <div style={{ background: "rgba(212, 175, 55, 0.08)", padding: "1.2rem", borderRadius: "10px", marginBottom: "1.5rem", flex: 1 }}>
+                  <p style={{ margin: "0 0 0.8rem 0", color: premiumColors.primary, fontSize: "0.85rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1px" }}>Best For: {room.bestFor}</p>
                   {room.amenities.map((amenity, i) => (
-                    <div key={i} style={{ color: "#555", fontSize: "0.9rem", margin: "0.3rem 0" }}>
+                    <div key={i} style={{ color: premiumColors.text, fontSize: "0.9rem", margin: "0.4rem 0" }}>
                       ✓ {amenity}
                     </div>
                   ))}
                 </div>
 
                 <div style={{ marginBottom: "1.5rem" }}>
-                  <p style={{ margin: "0.5rem 0", fontWeight: "bold", color: "#1a1a1a" }}>Rates per night (2 persons):</p>
+                  <p style={{ margin: "0.5rem 0", fontWeight: 600, color: premiumColors.primary, fontSize: "0.9rem", textTransform: "uppercase", letterSpacing: "0.5px" }}>Per Night (2 Persons):</p>
                   {room.rates.map((rate, i) => (
-                    <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "0.5rem 0", borderBottom: "1px solid #e0e0e0" }}>
-                      <span style={{ color: "#666" }}>{rate.type}</span>
-                      <span style={{ fontWeight: "bold", color: "#FFB800", fontSize: "1.1rem" }}>{rate.price}</span>
+                    <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "0.6rem 0", borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
+                      <span style={{ color: premiumColors.lightText, fontSize: "0.9rem" }}>{rate.type}</span>
+                      <span style={{ fontWeight: 700, color: premiumColors.accent, fontSize: "1.1rem" }}>{rate.price}</span>
                     </div>
                   ))}
                 </div>
@@ -339,36 +408,50 @@ function Index() {
                   rel="noopener noreferrer"
                   style={{
                     display: "block",
-                    padding: "0.8rem 1.5rem",
-                    background: "#25D366",
+                    padding: "0.9rem 1.5rem",
+                    background: premiumColors.success,
                     color: "white",
                     textDecoration: "none",
                     borderRadius: "8px",
                     textAlign: "center",
-                    fontWeight: "bold",
-                    transition: "background 0.3s",
-                    marginBottom: "0.5rem",
+                    fontWeight: 600,
+                    transition: "all 0.3s ease",
+                    marginBottom: "0.6rem",
+                    fontSize: "0.95rem",
                   }}
-                  onMouseOver={(e) => (e.currentTarget.style.background = "#20BA5A")}
-                  onMouseOut={(e) => (e.currentTarget.style.background = "#25D366")}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = "#229954";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = premiumColors.success;
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
                 >
-                  📱 Book Now on WhatsApp
+                  💬 Reserve on WhatsApp
                 </a>
                 <a
                   href={phoneNumber}
                   style={{
                     display: "block",
-                    padding: "0.8rem 1.5rem",
-                    background: "#FF6B6B",
-                    color: "white",
+                    padding: "0.9rem 1.5rem",
+                    background: premiumColors.primary,
+                    color: premiumColors.white,
                     textDecoration: "none",
                     borderRadius: "8px",
                     textAlign: "center",
-                    fontWeight: "bold",
-                    transition: "background 0.3s",
+                    fontWeight: 600,
+                    transition: "all 0.3s ease",
+                    fontSize: "0.95rem",
                   }}
-                  onMouseOver={(e) => (e.currentTarget.style.background = "#FF5252")}
-                  onMouseOut={(e) => (e.currentTarget.style.background = "#FF6B6B")}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = "#1a0e08";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = premiumColors.primary;
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
                 >
                   ☎️ Call to Book
                 </a>
@@ -381,56 +464,64 @@ function Index() {
         <section
           id="amenities"
           style={{
-            padding: "4rem 2rem",
-            background: "#f5f5f5",
+            padding: "6rem 2rem",
+            background: "white",
             textAlign: "center",
           }}
         >
-          <h2 style={{ marginBottom: "2rem", color: "#1a1a1a", fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}>
-            ✨ Hotel Amenities & Features
-          </h2>
+          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+            <span style={{ fontSize: "0.9rem", fontWeight: 600, color: premiumColors.accent, letterSpacing: "2px", textTransform: "uppercase" }}>
+              What We Offer
+            </span>
+            <h2 style={{ marginTop: "0.5rem", color: premiumColors.primary, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700 }}>
+              Exceptional Amenities & Services
+            </h2>
+          </div>
+
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
               gap: "2rem",
-              maxWidth: "1200px",
+              maxWidth: "1300px",
               margin: "0 auto",
             }}
           >
             {[
               { icon: "📶", name: "High-Speed WiFi", desc: "24/7 complimentary WiFi in all rooms" },
-              { icon: "🅿️", name: "Free Parking", desc: "Secure parking available for guests" },
-              { icon: "🚿", name: "Hot Water 24/7", desc: "Hot water available round the clock" },
-              { icon: "🧹", name: "Daily Housekeeping", desc: "Professional cleaning & maintenance" },
-              { icon: "👨‍👩‍👧‍👦", name: "Family Friendly", desc: "Perfect for families with children" },
-              { icon: "☎️", name: "24/7 Support", desc: "Customer service available anytime" },
+              { icon: "🅿️", name: "Free Parking", desc: "Secure & spacious parking for guests" },
+              { icon: "🚿", name: "Hot Water Always", desc: "Hot water available round the clock" },
+              { icon: "🧹", name: "Daily Housekeeping", desc: "Professional cleaning daily" },
+              { icon: "👨‍👩‍👧‍👦", name: "Family Friendly", desc: "Perfect for families & children" },
+              { icon: "☎️", name: "24/7 Support", desc: "Round-the-clock customer service" },
               { icon: "🔐", name: "Safe & Secure", desc: "CCTV & security personnel on duty" },
-              { icon: "🛁", name: "Modern Bathrooms", desc: "Clean, well-maintained bathrooms" },
-              { icon: "🎬", name: "Entertainment", desc: "LCD TV & cable in rooms" },
+              { icon: "🛁", name: "Modern Bathrooms", desc: "Clean & well-maintained facilities" },
+              { icon: "🎬", name: "Entertainment", desc: "LCD TV & cable in every room" },
             ].map((amenity, index) => (
               <div
                 key={index}
                 style={{
                   padding: "2rem",
-                  background: "white",
-                  borderRadius: "10px",
-                  border: "1px solid #e0e0e0",
-                  transition: "all 0.3s",
+                  background: premiumColors.light,
+                  borderRadius: "12px",
+                  border: `1px solid rgba(212, 175, 55, 0.2)`,
+                  transition: "all 0.3s ease",
                   cursor: "pointer",
                 }}
                 onMouseOver={(e) => {
-                  e.currentTarget.style.transform = "translateY(-5px)";
-                  e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.1)";
+                  e.currentTarget.style.transform = "translateY(-6px)";
+                  e.currentTarget.style.background = premiumColors.white;
+                  e.currentTarget.style.boxShadow = "0 8px 25px rgba(0,0,0,0.1)";
                 }}
                 onMouseOut={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.background = premiumColors.light;
                   e.currentTarget.style.boxShadow = "0 0px 0px rgba(0,0,0,0)";
                 }}
               >
-                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>{amenity.icon}</div>
-                <h3 style={{ color: "#1a1a1a", marginBottom: "0.5rem" }}>{amenity.name}</h3>
-                <p style={{ color: "#666", margin: 0 }}>{amenity.desc}</p>
+                <div style={{ fontSize: "2.5rem", marginBottom: "0.8rem" }}>{amenity.icon}</div>
+                <h3 style={{ color: premiumColors.primary, marginBottom: "0.5rem", fontWeight: 700, fontSize: "1.1rem" }}>{amenity.name}</h3>
+                <p style={{ color: premiumColors.lightText, margin: 0, fontSize: "0.9rem" }}>{amenity.desc}</p>
               </div>
             ))}
           </div>
@@ -440,48 +531,63 @@ function Index() {
         <section
           id="reviews"
           style={{
-            padding: "4rem 2rem",
-            background: "#f9f9f9",
+            padding: "6rem 2rem",
+            background: premiumColors.light,
             textAlign: "center",
           }}
         >
-          <h2 style={{ marginBottom: "2rem", color: "#1a1a1a", fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}>
-            ⭐ Guest Reviews & Testimonials
-          </h2>
+          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+            <span style={{ fontSize: "0.9rem", fontWeight: 600, color: premiumColors.accent, letterSpacing: "2px", textTransform: "uppercase" }}>
+              Guest Experiences
+            </span>
+            <h2 style={{ marginTop: "0.5rem", color: premiumColors.primary, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700 }}>
+              Guest Reviews & Testimonials
+            </h2>
+          </div>
+
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
               gap: "2rem",
               maxWidth: "1200px",
               margin: "0 auto",
             }}
           >
             {[
-              { name: "Rajesh Kumar", rating: 5, text: "Excellent budget hotel! Very clean rooms and helpful staff. Perfect for couples. Highly recommended!" },
-              { name: "Priya Sharma", rating: 5, text: "Amazing value for money. The AC room was cool, water was hot, and the bathroom was impeccably clean." },
-              { name: "Amit Patel", rating: 5, text: "Best hotel in this price range. WiFi was fast, parking was secure. Will definitely stay again!" },
-              { name: "Sneha Desai", rating: 5, text: "Family-friendly hotel with great amenities. Kids felt comfortable. Staff was very cooperative." },
-              { name: "Vikram Singh", rating: 5, text: "Perfect for business travelers. Comfortable bed, good service, and reasonable prices. A+ hotel!" },
-              { name: "Maya Iyer", rating: 5, text: "Cleanliness is their priority! Everything was spotless. Great location too. Definitely coming back!" },
+              { name: "Rajesh Kumar", rating: 5, text: "Exceptional value for money! Clean rooms, helpful staff, perfect for couples. Highly recommended!" },
+              { name: "Priya Sharma", rating: 5, text: "Amazing stay! AC works perfectly, hot water is consistent, and the bathroom is impeccably maintained." },
+              { name: "Amit Patel", rating: 5, text: "Best budget hotel experience. Fast WiFi, secure parking, professional service. Will definitely return!" },
+              { name: "Sneha Desai", rating: 5, text: "Family-friendly atmosphere with cooperative staff. Kids felt comfortable. Exceeded expectations!" },
+              { name: "Vikram Singh", rating: 5, text: "Perfect for business travelers. Comfortable beds, good housekeeping, excellent hospitality." },
+              { name: "Maya Iyer", rating: 5, text: "Cleanliness is impeccable! Everything spotless, great location, friendly management. Five stars!" },
             ].map((review, index) => (
               <div
                 key={index}
                 style={{
                   padding: "2rem",
                   background: "white",
-                  borderRadius: "10px",
-                  border: "1px solid #e0e0e0",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(0,0,0,0.05)",
+                  boxShadow: "0 4px 15px rgba(0,0,0,0.05)",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = "translateY(-4px)";
+                  e.currentTarget.style.boxShadow = "0 8px 25px rgba(0,0,0,0.1)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 4px 15px rgba(0,0,0,0.05)";
                 }}
               >
-                <div style={{ marginBottom: "1rem" }}>
+                <div style={{ marginBottom: "1rem", display: "flex", gap: "0.2rem" }}>
                   {[...Array(review.rating)].map((_, i) => (
-                    <span key={i} style={{ color: "#FFB800", fontSize: "1.2rem" }}>★</span>
+                    <span key={i} style={{ color: premiumColors.accent, fontSize: "1.3rem" }}>★</span>
                   ))}
                 </div>
-                <p style={{ color: "#555", marginBottom: "1rem", lineHeight: "1.6" }}>"{review.text}"</p>
-                <p style={{ color: "#1a1a1a", fontWeight: "bold", margin: 0 }}>- {review.name}</p>
+                <p style={{ color: premiumColors.text, marginBottom: "1.2rem", lineHeight: "1.7", fontSize: "0.95rem" }}>"{review.text}"</p>
+                <p style={{ color: premiumColors.primary, fontWeight: 700, margin: 0, fontSize: "0.95rem" }}>— {review.name}</p>
               </div>
             ))}
           </div>
@@ -491,19 +597,21 @@ function Index() {
         <section
           id="location"
           style={{
-            padding: "4rem 2rem",
+            padding: "6rem 2rem",
             background: "white",
           }}
         >
-          <h2 style={{ textAlign: "center", marginBottom: "0.5rem", color: "#1a1a1a", fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}>
-            📍 Our Location
-          </h2>
-          <p style={{ textAlign: "center", color: "#666", marginBottom: "2rem" }}>
-            Conveniently located in the heart of Bhiwandi
-          </p>
-          <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem", alignItems: "center" }}>
-            {/* Map Embed */}
-            <div style={{ borderRadius: "10px", overflow: "hidden", height: "400px", boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}>
+          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <span style={{ fontSize: "0.9rem", fontWeight: 600, color: premiumColors.accent, letterSpacing: "2px", textTransform: "uppercase" }}>
+              Find Us
+            </span>
+            <h2 style={{ marginTop: "0.5rem", color: premiumColors.primary, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700 }}>
+              Our Location
+            </h2>
+          </div>
+
+          <div style={{ maxWidth: "1300px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "center" }}>
+            <div style={{ borderRadius: "15px", overflow: "hidden", height: "420px", boxShadow: "0 8px 30px rgba(0,0,0,0.12)" }}>
               <iframe
                 width="100%"
                 height="100%"
@@ -514,68 +622,81 @@ function Index() {
               ></iframe>
             </div>
 
-            {/* Location Info */}
             <div>
-              <h3 style={{ color: "#1a1a1a", marginBottom: "1.5rem", fontSize: "1.3rem" }}>Hotel Sai Darshan</h3>
+              <h3 style={{ color: premiumColors.primary, marginBottom: "2rem", fontSize: "1.4rem", fontWeight: 700 }}>Hotel Sai Darshan</h3>
               
-              <div style={{ marginBottom: "1.5rem" }}>
-                <h4 style={{ color: "#666", marginBottom: "0.5rem" }}>📍 Address</h4>
-                <p style={{ color: "#555" }}>Bhiwandi, Thane District, Maharashtra 421302, India</p>
+              <div style={{ marginBottom: "2rem", paddingBottom: "2rem", borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
+                <h4 style={{ color: premiumColors.accent, marginBottom: "0.5rem", fontSize: "0.95rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1px" }}>📍 Address</h4>
+                <p style={{ color: premiumColors.text, fontSize: "1rem", lineHeight: "1.6", margin: 0 }}>Bhiwandi, Thane District<br/>Maharashtra 421302, India</p>
               </div>
 
-              <div style={{ marginBottom: "1.5rem" }}>
-                <h4 style={{ color: "#666", marginBottom: "0.5rem" }}>☎️ Contact</h4>
-                <a href={phoneNumber} style={{ color: "#25D366", textDecoration: "none", fontWeight: "bold", fontSize: "1.1rem" }}>
+              <div style={{ marginBottom: "2rem", paddingBottom: "2rem", borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
+                <h4 style={{ color: premiumColors.accent, marginBottom: "0.5rem", fontSize: "0.95rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1px" }}>☎️ Contact</h4>
+                <a href={phoneNumber} style={{ color: premiumColors.secondary, textDecoration: "none", fontWeight: 700, fontSize: "1.2rem" }}>
                   +91 97122 27011
                 </a>
               </div>
 
-              <div style={{ marginBottom: "2rem" }}>
-                <h4 style={{ color: "#666", marginBottom: "0.5rem" }}>🕐 Check-in / Check-out</h4>
-                <p style={{ color: "#555" }}>Check-in: 1:00 PM | Check-out: 11:00 AM</p>
+              <div style={{ marginBottom: "2rem", paddingBottom: "2rem", borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
+                <h4 style={{ color: premiumColors.accent, marginBottom: "0.5rem", fontSize: "0.95rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "1px" }}>🕐 Check-in / Check-out</h4>
+                <p style={{ color: premiumColors.text, fontSize: "0.95rem", margin: 0 }}>Check-in: 1:00 PM | Check-out: 11:00 AM</p>
               </div>
 
-              <a
-                href="https://www.google.com/travel/hotels/s/REpukhBFPvheRbd58"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-block",
-                  padding: "0.8rem 1.5rem",
-                  background: "#1877f2",
-                  color: "white",
-                  textDecoration: "none",
-                  borderRadius: "8px",
-                  fontWeight: "bold",
-                  transition: "background 0.3s",
-                  marginBottom: "1rem",
-                  marginRight: "1rem",
-                }}
-                onMouseOver={(e) => (e.currentTarget.style.background = "#1666D0")}
-                onMouseOut={(e) => (e.currentTarget.style.background = "#1877f2")}
-              >
-                📍 Google Maps Directions
-              </a>
+              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+                <a
+                  href="https://www.google.com/travel/hotels/s/REpukhBFPvheRbd58"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    padding: "0.9rem 1.5rem",
+                    background: premiumColors.primary,
+                    color: "white",
+                    textDecoration: "none",
+                    borderRadius: "8px",
+                    fontWeight: 600,
+                    transition: "all 0.3s ease",
+                    fontSize: "0.95rem",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = "#1a0e08";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = premiumColors.primary;
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  📍 Get Directions
+                </a>
 
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-block",
-                  padding: "0.8rem 1.5rem",
-                  background: "#25D366",
-                  color: "white",
-                  textDecoration: "none",
-                  borderRadius: "8px",
-                  fontWeight: "bold",
-                  transition: "background 0.3s",
-                }}
-                onMouseOver={(e) => (e.currentTarget.style.background = "#20BA5A")}
-                onMouseOut={(e) => (e.currentTarget.style.background = "#25D366")}
-              >
-                💬 WhatsApp Location
-              </a>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    padding: "0.9rem 1.5rem",
+                    background: premiumColors.success,
+                    color: "white",
+                    textDecoration: "none",
+                    borderRadius: "8px",
+                    fontWeight: 600,
+                    transition: "all 0.3s ease",
+                    fontSize: "0.95rem",
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.background = "#229954";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.background = premiumColors.success;
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  💬 Share Location
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -584,70 +705,87 @@ function Index() {
         <section
           id="faq"
           style={{
-            padding: "4rem 2rem",
-            background: "#f5f5f5",
+            padding: "6rem 2rem",
+            background: premiumColors.light,
           }}
         >
-          <h2 style={{ textAlign: "center", marginBottom: "2rem", color: "#1a1a1a", fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}>
-            ❓ Frequently Asked Questions
-          </h2>
-          <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+            <span style={{ fontSize: "0.9rem", fontWeight: 600, color: premiumColors.accent, letterSpacing: "2px", textTransform: "uppercase" }}>
+              Questions & Answers
+            </span>
+            <h2 style={{ marginTop: "0.5rem", color: premiumColors.primary, fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700 }}>
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div style={{ maxWidth: "950px", margin: "0 auto" }}>
             {[
               { q: "What is the cheapest room available?", a: "Our Budget Room (Non-AC) starts at ₹1,199 per night for 2 persons. AC budget rooms are available at ₹1,700/night." },
-              { q: "Is WiFi complimentary?", a: "Yes! High-speed WiFi is complimentary for all guests 24/7 in all rooms." },
+              { q: "Is WiFi complimentary?", a: "Yes! High-speed WiFi is complimentary for all guests 24/7 in all rooms and common areas." },
               { q: "Is parking available?", a: "Yes, secure parking is available free of charge for all hotel guests." },
               { q: "What are your check-in/check-out times?", a: "Standard check-in is at 1:00 PM and check-out is at 11:00 AM. Early check-in/late check-out may be available on request." },
-              { q: "Do you have hot water 24/7?", a: "Yes, hot water is available 24/7 in all our rooms with water heaters." },
+              { q: "Do you have hot water 24/7?", a: "Yes, hot water is available 24/7 in all our rooms with modern water heating systems." },
               { q: "Can I book directly without WhatsApp?", a: "Absolutely! You can call us at 97122-27011 to book directly or visit our reception." },
               { q: "Is the hotel family-friendly?", a: "Yes! We are very family-friendly with comfortable rooms and helpful staff to ensure a pleasant stay." },
-              { q: "What payment methods do you accept?", a: "We accept cash, UPI, credit/debit cards. Most common payment methods are welcome." },
+              { q: "What payment methods do you accept?", a: "We accept cash, UPI, credit/debit cards, and online transfers. All major payment methods are welcome." },
             ].map((faq, index) => (
-              <div key={index} style={{ marginBottom: "1.5rem", background: "white", padding: "1.5rem", borderRadius: "8px", border: "1px solid #e0e0e0" }}>
-                <h4 style={{ color: "#1a1a1a", marginBottom: "0.5rem", fontSize: "1.05rem" }}>❓ {faq.q}</h4>
-                <p style={{ color: "#666", margin: 0, lineHeight: "1.6" }}>{faq.a}</p>
+              <div key={index} style={{ marginBottom: "1.5rem", background: "white", padding: "1.8rem", borderRadius: "10px", border: "1px solid rgba(0,0,0,0.05)", transition: "all 0.3s ease" }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.08)";
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.boxShadow = "0 0px 0px rgba(0,0,0,0)";
+                }}
+              >
+                <h4 style={{ color: premiumColors.primary, marginBottom: "0.8rem", fontSize: "1.05rem", fontWeight: 700 }}>❓ {faq.q}</h4>
+                <p style={{ color: premiumColors.text, margin: 0, lineHeight: "1.7", fontSize: "0.95rem" }}>{faq.a}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Contact Section */}
+        {/* CTA Section */}
         <section
           id="contact"
           style={{
-            padding: "4rem 2rem",
-            maxWidth: "1200px",
-            margin: "0 auto",
+            padding: "6rem 2rem",
+            background: `linear-gradient(135deg, ${premiumColors.primary}95 0%, ${premiumColors.secondary}90 100%)`,
             textAlign: "center",
+            color: "white",
           }}
         >
-          <h2 style={{ marginBottom: "2rem", color: "#1a1a1a", fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}>
-            📞 Ready to Book Your Stay?
+          <h2 style={{ marginBottom: "1rem", color: "white", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", fontWeight: 700 }}>
+            Ready to Experience Premium Comfort?
           </h2>
-          <p style={{ color: "#666", marginBottom: "2rem", fontSize: "1.05rem" }}>
-            Contact us now for quick booking and best rates!
+          <p style={{ color: "rgba(255,255,255,0.9)", marginBottom: "2.5rem", fontSize: "1.05rem" }}>
+            Book your stay today and enjoy exceptional hospitality at affordable rates
           </p>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center" }}>
+          <div style={{ display: "flex", gap: "1.2rem", flexWrap: "wrap", justifyContent: "center" }}>
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                padding: "1rem 2rem",
-                background: "#25D366",
+                padding: "1rem 2.5rem",
+                background: premiumColors.success,
                 color: "white",
                 textDecoration: "none",
-                borderRadius: "8px",
-                fontWeight: "bold",
-                transition: "all 0.3s",
+                borderRadius: "50px",
+                fontWeight: 600,
+                transition: "all 0.3s ease",
                 display: "inline-block",
+                boxShadow: `0 4px 15px rgba(39, 174, 96, 0.3)`,
+                fontSize: "1rem",
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.background = "#20BA5A";
-                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.background = "#229954";
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = `0 6px 20px rgba(39, 174, 96, 0.4)`;
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = "#25D366";
+                e.currentTarget.style.background = premiumColors.success;
                 e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = `0 4px 15px rgba(39, 174, 96, 0.3)`;
               }}
             >
               💬 Chat on WhatsApp
@@ -655,47 +793,54 @@ function Index() {
             <a
               href={phoneNumber}
               style={{
-                padding: "1rem 2rem",
-                background: "#FF6B6B",
-                color: "white",
+                padding: "1rem 2.5rem",
+                background: premiumColors.accent,
+                color: premiumColors.primary,
                 textDecoration: "none",
-                borderRadius: "8px",
-                fontWeight: "bold",
-                transition: "all 0.3s",
+                borderRadius: "50px",
+                fontWeight: 600,
+                transition: "all 0.3s ease",
                 display: "inline-block",
+                boxShadow: `0 4px 15px rgba(212, 175, 55, 0.3)`,
+                fontSize: "1rem",
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.background = "#FF5252";
-                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.boxShadow = `0 6px 20px rgba(212, 175, 55, 0.4)`;
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = "#FF6B6B";
                 e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = `0 4px 15px rgba(212, 175, 55, 0.3)`;
               }}
             >
-              ☎️ Call: 9712227011
+              ☎️ Call Now
             </a>
           </div>
         </section>
 
+        {/* Premium Footer */}
         <footer
           style={{
-            background: "#1a1a1a",
+            background: premiumColors.primary,
             color: "white",
-            padding: "3rem 2rem",
+            padding: "4rem 2rem",
             textAlign: "center",
-            marginTop: "2rem",
           }}
         >
-          <h3 style={{ margin: "0 0 1rem 0" }}>🏨 Hotel Sai Darshan</h3>
-          <p style={{ margin: "0.5rem 0", color: "#ccc" }}>
-            Affordable Luxury • Premium Comfort • Prime Location
+          <h3 style={{ margin: "0 0 1rem 0", fontSize: "1.8rem", fontWeight: 700, letterSpacing: "1px" }}>🏨 Hotel Sai Darshan</h3>
+          <p style={{ margin: "0.5rem 0", color: premiumColors.accent, fontSize: "1rem", fontWeight: 600, letterSpacing: "1px" }}>
+            Premium Comfort • Affordable Luxury • Exceptional Service
           </p>
-          <p style={{ margin: "1rem 0 0 0", fontSize: "0.875rem", color: "#999" }}>
+          <div style={{ margin: "1.5rem 0", paddingTop: "1.5rem", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+            <p style={{ margin: "0.5rem 0", color: "rgba(255,255,255,0.9)" }}>
+              📍 Bhiwandi, Maharashtra 421302 | ☎️ +91 97122 27011
+            </p>
+            <p style={{ margin: "0.5rem 0", color: "rgba(255,255,255,0.9)" }}>
+              💬 Available on WhatsApp 24/7
+            </p>
+          </div>
+          <p style={{ margin: "1.5rem 0 0 0", fontSize: "0.85rem", color: "rgba(255,255,255,0.7)" }}>
             © 2024 Hotel Sai Darshan. All rights reserved.
-          </p>
-          <p style={{ margin: "1rem 0 0 0", fontSize: "0.85rem", color: "#999" }}>
-            Phone: +91 97122 27011 | Location: Bhiwandi, Maharashtra 421302
           </p>
         </footer>
       </main>
